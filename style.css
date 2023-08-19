@@ -1,0 +1,33 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+.calculator-container {
+    border: 2px solid black;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+#display {
+    margin-top: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    width: 300px;
+}
+.buttons-container {
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.buttons-container > button {
+    padding: 20px;
+}
