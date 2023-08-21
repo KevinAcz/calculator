@@ -45,41 +45,50 @@ buttons.forEach((button) => {
             firstNumber = '';
             secondNumber = '';
         } 
-        //IF button is an operator,
+        //IF button is an operator
         else if (isNaN(Number(button.textContent)) && button.textContent !== '=') {
-            operator = button.textContent;
+
             if (firstNumber === '') {
                 firstNumber = currentNumber;
                 console.log('primer numero guardado')
                 
             }
+            else if (secondNumber === '') {
+                secondNumber = currentNumber;
+            }
+            //IF both numbers exists, we can operate
+            if (firstNumber !== '' && secondNumber !== '') {
+                result = operate(+firstNumber,+secondNumber, operator);
+                display.textContent = result;
+                firstNumber = result;
+                secondNumber = '';
+            }
+            operator = button.textContent;
             currentNumber = '';
 
-            // firstNumber = result;
-            // secondNumber = '';
-            // }
-            // currentNumber = '';
-
         } else if (button.textContent === '=') {
-            console.log('im here!');
 
-            //asigns second numbers
+            //asigns second number
             if (secondNumber === ''){ 
             secondNumber = currentNumber;
-            console.log('segundo numero guardado')
             };
             
             //IF both numbers exists, we can operate:
             if (firstNumber !== '' && secondNumber !== '') {
                 result = operate(+firstNumber,+secondNumber, operator);
+                if (result === Infinity) {
+                    result = 'really?'
+                }
                 display.textContent = result;
+                firstNumber = result;
+                secondNumber = '';
 
                 } else {
                     display.textContent = 'Need two numbers and an operator.';
                     console.log('firstNumber: ' +firstNumber+' secondNumber: ' +secondNumber+ ' operator: '+ operator);
                 }
 
-            } else {   
+            } else {   //if its a number, append the button
 
             currentNumber += button.textContent;
             display.textContent = currentNumber;
