@@ -5,35 +5,72 @@ body {
     align-items: center;
     height: 100vh;
     overflow: hidden;
+    box-sizing: border-box;
     background-color: antiquewhite;
-}
-.calculator-container {
-    background-color: white;
-    border: 2px solid black;
-    width: 500px;
-    height: 400px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     gap: 20px;
 }
-#display {
-    margin-top: 20px;
-    padding: 20px;
+.footer {
+    color: white;
+    flex: 1;
+    font-size: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid black;
-    width: 300px;
+}
+.calculator-container {
+    padding: 30px;
+    border-radius: 30px;
+    background-color: black;
+    width: 280px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 13px 7px 14px -6px rgba(41,35,41,1);
+    gap: 20px;
+}
+#display {
+    /* overflow: hidden; */
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    color: white;
+    font-size: 70px;
+    height: 180px;
+    padding-right: 30px;
+    padding-bottom: 20px;
 }
 .buttons-container {
-    padding: 30px;
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 10px;
 }
 .buttons-container > button {
-    padding: 20px;
+    border: none;
+    border-radius: 100px;
+    height: 60px;
+    width: 60px;
+    font-size: 20px;
+    /* transition-duration: 1s; */
+}
+.buttons-container > button:active {
+    background-color: white;
+    color: #F69906;
+}
+.number {
+    background-color: #313131;
+    color: white;
+}
+
+.operators{
+    background-color: #F69906;
+    color: white;
+}
+.other-operators {
+    background-color: #9F9F9F;
+    color: black;
 }

@@ -49,7 +49,7 @@ buttons.forEach((button) => {
             secondNumber = '';
         } 
         //IF button is an operator
-        else if (isNaN(Number(button.textContent)) && button.textContent !== '=' && button.textContent !== '.' && button.textContent !== '±') {
+        else if (isNaN(Number(button.textContent)) && button.textContent !== '=' && button.textContent !== '.' && button.textContent !== '±' && button.textContent !== '%') {
             console.log('firstNumber: ' +firstNumber+' secondNumber: ' +secondNumber+ ' operator: '+ operator);
             if (firstNumber === '') {
                 firstNumber = currentNumber;
@@ -62,6 +62,7 @@ buttons.forEach((button) => {
             //IF both numbers exists, we can operate
             if (firstNumber !== '' && secondNumber !== '') {
                 result = operate(+firstNumber,+secondNumber, operator);
+                console.log('firstNUmber: ' + firstNumber, 'secondNumber '+secondNumber)
                 if (firstNumber.includes('.') || secondNumber.includes('.')) {
                     result = Math.round(result * 100) / 100;
                 }
@@ -111,7 +112,10 @@ buttons.forEach((button) => {
                 }
 
             } else if (button.textContent === '±') {
-                display.textContent = display.textContent * (-1);
+                display.textContent = (+display.textContent) * (-1);
+                currentNumber = display.textContent;
+            }else if (button.textContent === '%'){
+                display.textContent = (+display.textContent) / 100;
                 currentNumber = display.textContent;
 
 
