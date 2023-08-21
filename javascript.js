@@ -4,16 +4,16 @@ let secondNumber = '';
 let operator = '';
 
 function add(x,y) {
-    return x + y;
+    return (x) + (y);
 }
 function subtract(x,y) {
-    return x - y;
+    return (x) - (y);
 }
 function multiply(x,y) {
-    return x * y;
+    return (x) * (y);
 }
 function divide(x,y) {
-    return x / y;
+    return (x) / (y);
 }
 function operate(x, y, operator) {
     if (operator === '+') {
@@ -29,7 +29,7 @@ function operate(x, y, operator) {
         return ( divide(x,y));
     }
 }
-//TODO: TRucante decimals
+
 //TODO: Make a decent UI
 //TODO: 
 const display = document.querySelector('#display');
@@ -42,14 +42,14 @@ buttons.forEach((button) => {
         console.log(e.target);
 
         //if button is CLEAR
-        if (button.textContent === 'Clear') {
-            display.textContent = 'Display';
+        if (button.textContent === 'AC') {
+            display.textContent = '0';
             currentNumber = '';
             firstNumber = '';
             secondNumber = '';
         } 
         //IF button is an operator
-        else if (isNaN(Number(button.textContent)) && button.textContent !== '=' && button.textContent !== '.') {
+        else if (isNaN(Number(button.textContent)) && button.textContent !== '=' && button.textContent !== '.' && button.textContent !== '±') {
             console.log('firstNumber: ' +firstNumber+' secondNumber: ' +secondNumber+ ' operator: '+ operator);
             if (firstNumber === '') {
                 firstNumber = currentNumber;
@@ -104,12 +104,16 @@ buttons.forEach((button) => {
                         secondNumber = '';
                         display.textContent = firstNumber;
                         if (currentNumber === '') {
-                            display.textContent = 'Display';
+                            display.textContent = '0';
                         }
                         currentNumber = '';
                     }
-                    console.log('firstNumber: ' +firstNumber+' secondNumber: ' +secondNumber+ ' operator: '+ operator);
                 }
+
+            } else if (button.textContent === '±') {
+                display.textContent = display.textContent * (-1);
+                currentNumber = display.textContent;
+
 
             } else {   //if its a number, append the button
             

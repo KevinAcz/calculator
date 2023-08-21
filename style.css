@@ -1,8 +1,14 @@
 body {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    background-color: antiquewhite;
 }
 .calculator-container {
+    background-color: white;
     border: 2px solid black;
     width: 500px;
     height: 400px;
