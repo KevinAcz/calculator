@@ -29,6 +29,9 @@ function operate(x, y, operator) {
         return ( divide(x,y));
     }
 }
+//TODO: TRucante decimals
+//TODO: Make a decent UI
+//TODO: 
 const display = document.querySelector('#display');
 const buttons = document.querySelectorAll(".buttons-container button");
 console.log(buttons);
@@ -46,7 +49,7 @@ buttons.forEach((button) => {
             secondNumber = '';
         } 
         //IF button is an operator
-        else if (isNaN(Number(button.textContent)) && button.textContent !== '=') {
+        else if (isNaN(Number(button.textContent)) && button.textContent !== '=' && button.textContent !== '.') {
 
             if (firstNumber === '') {
                 firstNumber = currentNumber;
@@ -59,6 +62,9 @@ buttons.forEach((button) => {
             //IF both numbers exists, we can operate
             if (firstNumber !== '' && secondNumber !== '') {
                 result = operate(+firstNumber,+secondNumber, operator);
+                if (firstNumber.includes('.') || secondNumber.includes('.')) {
+                    result = Math.round(result * 100) / 100;
+                }
                 display.textContent = result;
                 firstNumber = result;
                 secondNumber = '';
@@ -76,8 +82,14 @@ buttons.forEach((button) => {
             //IF both numbers exists, we can operate:
             if (firstNumber !== '' && secondNumber !== '') {
                 result = operate(+firstNumber,+secondNumber, operator);
+                //if result is a decimal, round it:
+                resultStr = result.toString();
+                if (resultStr.includes('.')) {
+                    result = Math.round(result * 1000) / 1000;
+                }
+                //if result is a division by 0, print error:
                 if (result === Infinity) {
-                    result = 'really?'
+                    result = 'bruh';
                 }
                 display.textContent = result;
                 firstNumber = result;
@@ -89,8 +101,16 @@ buttons.forEach((button) => {
                 }
 
             } else {   //if its a number, append the button
+            
+            if (currentNumber.includes('.')) {
+                if (button.textContent !== '.') {
+                    currentNumber +=button.textContent;
+                }
+            } else {
+                currentNumber +=button.textContent;
+            }
 
-            currentNumber += button.textContent;
+
             display.textContent = currentNumber;
         }
 
