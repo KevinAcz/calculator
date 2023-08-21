@@ -50,7 +50,7 @@ buttons.forEach((button) => {
         } 
         //IF button is an operator
         else if (isNaN(Number(button.textContent)) && button.textContent !== '=' && button.textContent !== '.') {
-
+            console.log('firstNumber: ' +firstNumber+' secondNumber: ' +secondNumber+ ' operator: '+ operator);
             if (firstNumber === '') {
                 firstNumber = currentNumber;
                 console.log('primer numero guardado')
@@ -76,7 +76,7 @@ buttons.forEach((button) => {
 
             //asigns second number
             if (secondNumber === ''){ 
-            secondNumber = currentNumber;
+                secondNumber = currentNumber;
             };
             
             //IF both numbers exists, we can operate:
@@ -94,9 +94,20 @@ buttons.forEach((button) => {
                 display.textContent = result;
                 firstNumber = result;
                 secondNumber = '';
+                currentNumber = '';
 
                 } else {
-                    display.textContent = 'Need two numbers and an operator.';
+                    if (firstNumber === '') {
+                        console.log('currentnumber: '+currentNumber);
+
+                        firstNumber = currentNumber;
+                        secondNumber = '';
+                        display.textContent = firstNumber;
+                        if (currentNumber === '') {
+                            display.textContent = 'Display';
+                        }
+                        currentNumber = '';
+                    }
                     console.log('firstNumber: ' +firstNumber+' secondNumber: ' +secondNumber+ ' operator: '+ operator);
                 }
 
