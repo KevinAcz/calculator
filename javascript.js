@@ -2,7 +2,8 @@ let currentNumber = '';
 let firstNumber = '';
 let secondNumber = '';
 let operator = '';
-
+//TODO: Check display div overflows
+//TODO: Check weird bugs
 function add(x,y) {
     return (x) + (y);
 }
@@ -30,8 +31,6 @@ function operate(x, y, operator) {
     }
 }
 
-//TODO: Make a decent UI
-//TODO: 
 const display = document.querySelector('#display');
 const buttons = document.querySelectorAll(".buttons-container button");
 console.log(buttons);
@@ -66,7 +65,11 @@ buttons.forEach((button) => {
                 if (firstNumber.includes('.') || secondNumber.includes('.')) {
                     result = Math.round(result * 100) / 100;
                 }
+                if (toString(result).length > 7) {
+                    display.textContent = result.substring(0,7);
+                } else {
                 display.textContent = result;
+                }
                 firstNumber = result;
                 secondNumber = '';
             }
@@ -129,8 +132,11 @@ buttons.forEach((button) => {
                 currentNumber +=button.textContent;
             }
 
-
+            if (currentNumber.length > 7) {
+                display.textContent = currentNumber.substring(0,7);
+            } else {
             display.textContent = currentNumber;
+            }
         }
 
         console.log(currentNumber);

@@ -30,7 +30,7 @@ body {
     gap: 20px;
 }
 #display {
-    /* overflow: hidden; */
+    overflow: hidden;
     width: 100%;
     display: flex;
     justify-content: flex-end;
@@ -39,7 +39,6 @@ body {
     font-size: 70px;
     height: 180px;
     padding-right: 30px;
-    padding-bottom: 20px;
 }
 .buttons-container {
     flex: 1;
